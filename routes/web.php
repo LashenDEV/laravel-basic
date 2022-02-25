@@ -33,6 +33,9 @@ Route::get('/about', function () {
 Route::get('/contactfafdfaff-fdsfaf-fafd', [ContactController::class, 'index'])->name('cont');
 
 Route::get('/category/all',[CategoryController::class, 'allCat'])->name('all.category');
+Route::post('/category/add',[CategoryController::class, 'addCat'])->name('store.category');
+Route::get('/category/edit/{id}',[CategoryController::class, 'Edit'])->name('edit.category');
+Route::post('/category/update/{id}',[CategoryController::class, 'Update'])->name('update.category');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //    $users = User::all();
