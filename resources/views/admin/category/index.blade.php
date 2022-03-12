@@ -40,7 +40,7 @@
                                         <td>{{$category->created_at->diffForHumans()}}</td>
                                         <td><a href="{{route('edit.category', ['id' => $category->id])}}"
                                                class="btn btn-info">Edit</a>
-                                            <a href="" class="btn btn-danger">Delete</a></td>
+                                            <a href="{{route('softdelete.category', $category->id)}}" class="btn btn-danger">Delete</a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -69,6 +69,48 @@
                                 </form>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                Trashed Categories
+                            </div>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">SL no</th>
+                                    <th scope="col">User Id</th>
+                                    <th scope="col">Category Name</th>
+                                    <th scope="col">Created at</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($trashCat as $category)
+                                    <tr>
+                                        <th scope="row">{{$categories->firstItem()+$loop->index}}</th>
+                                        <td>{{$category->user->name}}</td>
+                                        <td>{{$category->category_name}}</td>
+                                        <td>{{$category->created_at->diffForHumans()}}</td>
+                                        <td><a href="{{route('restore.category', ['id' => $category->id])}}"
+                                               class="btn btn-info">Restore</a>
+                                            <a href="{{route('pdelete.category', ['id' => $category->id])}}" class="btn btn-danger">P. Delete</a></td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                            {{$trashCat->links()}}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
                     </div>
                 </div>
             </div>
