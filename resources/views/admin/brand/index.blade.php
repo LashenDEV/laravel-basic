@@ -39,9 +39,14 @@
                                         <td><img src="{{asset($brand->brand_image)}}" style="height: 40px; width: 70px">
                                         </td>
                                         <td>{{$brand->created_at->diffForHumans()}}</td>
-                                        <td><a href="{{ route('edit.brand', $brand->id) }}"
-                                               class="btn btn-info">Edit</a>
-                                            <a href="{{ route('delete.brand', $brand->id) }}" class="btn btn-danger">Delete</a>
+                                        <td>
+                                            <a href="{{ route('edit.brand', $brand->id) }}"
+                                               class="btn btn-info">Edit
+                                            </a>
+                                            <a href="{{ route('delete.brand', $brand->id) }}"
+                                               class="btn btn-danger"
+                                               onclick="return confirm('Are You Sure to Delete This Item')">Delete
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
