@@ -18,6 +18,10 @@ use App\Models\User;
 |
 */
 
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -48,6 +52,7 @@ Route::get('/brand/edit/{id}', [BrandController::class, 'Edit'])->name('edit.bra
 Route::get('/brand/delete/{id}', [BrandController::class, 'Delete'])->name('delete.brand');
 Route::post('/brand/update/{id}', [BrandController::class, 'Update'])->name('update.brand');
 Route::post('/brand/delete/{id}', [BrandController::class, 'Delete'])->name('delete.brand');
+Route::get('/user/logout', [BrandController::class, 'Logout'])->name('user.logout');
 
 //Multi Image
 Route::get('/multi/image', [BrandController::class, 'MultiImage'])->name('multi.image');
@@ -56,6 +61,6 @@ Route::post('/multi/add', [BrandController::class, 'StoreImage'])->name('store.i
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //    $users = User::all();
-    $users = DB::table('users')->get();
-    return view('dashboard', compact('users'));
+//    $users = DB::table('users')->get();
+    return view('admin.index');
 })->name('dashboard');
