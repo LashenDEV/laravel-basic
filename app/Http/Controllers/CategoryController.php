@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function allCat()
     {
         $categories = Category::latest()->paginate(5);
