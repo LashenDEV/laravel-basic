@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
@@ -23,7 +24,8 @@ Route::get('/email/verify', function () {
 })->middleware('auth')->name('verification.notice');
 
 Route::get('/', function () {
-    return view('welcome');
+    $brands = DB::table('brands')->get();
+    return view('home', compact('brands'));
 });
 
 Route::get('/home', function () {
@@ -57,6 +59,12 @@ Route::get('/user/logout', [BrandController::class, 'Logout'])->name('user.logou
 //Multi Image
 Route::get('/multi/image', [BrandController::class, 'MultiImage'])->name('multi.image');
 Route::post('/multi/add', [BrandController::class, 'StoreImage'])->name('store.image');
+
+
+//Admin All Route
+Route::get('/home/slider', [HomeController::class, 'HomeSlider'])->name('home.slider');
+Route::get('/add/slider', [HomeController::class, 'AddSlider'])->name('add.slider');
+Route::post('/store/slider', [HomeController::class, 'StoreSlider'])->name('store.slider');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

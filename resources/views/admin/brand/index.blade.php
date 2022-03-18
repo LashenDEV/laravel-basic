@@ -1,10 +1,6 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            All brand
-        </h2>
-    </x-slot>
+@extends('admin.admin-master')
 
+@section('admin')
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="container">
@@ -86,47 +82,4 @@
             </div>
         </div>
     </div>
-    {{--    <div class="py-12">--}}
-    {{--        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">--}}
-    {{--            <div class="container">--}}
-    {{--                <div class="row">--}}
-    {{--                    <div class="col-md-8">--}}
-    {{--                        <div class="card">--}}
-    {{--                            <div class="card-header">--}}
-    {{--                                Trashed Categories--}}
-    {{--                            </div>--}}
-    {{--                            <table class="table">--}}
-    {{--                                <thead>--}}
-    {{--                                <tr>--}}
-    {{--                                    <th scope="col">SL no</th>--}}
-    {{--                                    <th scope="col">User Id</th>--}}
-    {{--                                    <th scope="col">Category Name</th>--}}
-    {{--                                    <th scope="col">Created at</th>--}}
-    {{--                                    <th scope="col">Action</th>--}}
-    {{--                                </tr>--}}
-    {{--                                </thead>--}}
-    {{--                                <tbody>--}}
-    {{--                                @foreach($trashCat as $brand)--}}
-    {{--                                    <tr>--}}
-    {{--                                        <th scope="row">{{$brands->firstItem()+$loop->index}}</th>--}}
-    {{--                                        <td>{{$brand->brand_name}}</td>--}}
-    {{--                                        <img src="" alt="">--}}
-    {{--                                        <td>{{$brand->created_at->diffForHumans()}}</td>--}}
-    {{--                                        <td><a href="{{route('restore.brand', ['id' => $brand->id])}}"--}}
-    {{--                                               class="btn btn-info">Restore</a>--}}
-    {{--                                            <a href="{{route('pdelete.brand', ['id' => $brand->id])}}"--}}
-    {{--                                               class="btn btn-danger">P. Delete</a></td>--}}
-    {{--                                    </tr>--}}
-    {{--                                @endforeach--}}
-    {{--                                </tbody>--}}
-    {{--                            </table>--}}
-    {{--                            {{$trashCat->links()}}--}}
-    {{--                        </div>--}}
-    {{--                    </div>--}}
-    {{--                    <div class="col-md-4">--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
-</x-app-layout>
+@endsection
