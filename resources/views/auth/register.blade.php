@@ -60,8 +60,9 @@
                 </div>
                 <div class="card-body p-5">
                     <h4 class="text-dark mb-5">Sign Up</h4>
-                    <form action="{{ route('register') }}">
-                        <div class="row">
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
+                        <div clas   s="row">
                             <div class="form-group col-md-12 mb-4">
                                 <input type="text" class="form-control input-lg" id="name" aria-describedby="nameHelp"
                                        placeholder="Name" name="name" :value="old('name')">
