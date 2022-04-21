@@ -51,9 +51,8 @@ Route::get('pdelete/category/{id}', [CategoryController::class, 'PDelete'])->nam
 Route::get('/brand/all', [BrandController::class, 'allBrand'])->name('all.brand');
 Route::post('/brand/add', [BrandController::class, 'StoreBrand'])->name('store.brand');
 Route::get('/brand/edit/{id}', [BrandController::class, 'Edit'])->name('edit.brand');
-Route::get('/brand/delete/{id}', [BrandController::class, 'Delete'])->name('delete.brand');
 Route::post('/brand/update/{id}', [BrandController::class, 'Update'])->name('update.brand');
-Route::post('/brand/delete/{id}', [BrandController::class, 'Delete'])->name('delete.brand');
+Route::get('/brand/delete/{id}', [BrandController::class, 'Delete'])->name('delete.brand');
 Route::get('/user/logout', [BrandController::class, 'Logout'])->name('user.logout');
 
 //Multi Image
@@ -65,6 +64,9 @@ Route::post('/multi/add', [BrandController::class, 'StoreImage'])->name('store.i
 Route::get('/home/slider', [HomeController::class, 'HomeSlider'])->name('home.slider');
 Route::get('/add/slider', [HomeController::class, 'AddSlider'])->name('add.slider');
 Route::post('/store/slider', [HomeController::class, 'StoreSlider'])->name('store.slider');
+Route::get('/edit/slider/{id}', [HomeController::class, 'EditSlider'])->name('edit.slider');
+Route::post('/update/slider/{id}', [HomeController::class, 'UpdateSlider'])->name('update.slider');
+Route::get('/delete/slider/{id}', [HomeController::class, 'DeleteSlider'])->name('delete.slider');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
