@@ -8,6 +8,8 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PortfolioController;
+use App\Models\Multipic;
 use App\Models\User;
 
 /*
@@ -28,8 +30,9 @@ Route::get('/email/verify', function () {
 Route::get('/', function () {
     $brands = DB::table('brands')->get();
     $homeabout = DB::table('home_abouts')->first();
+    $images = Multipic::all();
     $services = DB::table('services')->get();
-    return view('home', compact('brands', 'homeabout','services'));
+    return view('home', compact('brands', 'homeabout', 'services', 'images'));
 });
 
 Route::get('/home', function () {
@@ -88,8 +91,11 @@ Route::get('/edit/service/{id}', [ServiceController::class, 'EditService'])->nam
 Route::post('/update/service/{id}', [ServiceController::class, 'UpdateService'])->name('update.service');
 Route::get('/delete/service/{id}', [ServiceController::class, 'DeleteService'])->name('delete.service');
 
+//Portfolio Route
+Route::get('/portfolio', [PortfolioController::class, 'Portfolio'])->name('portfolio');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//    $users = User::all();
-//    $users = DB::table('users')->get();
+    //    $users = User::all();
+    //    $users = DB::table('users')->get();
     return view('admin.index');
 })->name('dashboard');
