@@ -10,6 +10,7 @@
                 <h2><strong>About Us</strong></h2>
             </div>
 
+            @isset($homeabout)
             <div class="row content">
                 <div class="col-lg-6" data-aos="fade-right">
                     <h2>{{ $homeabout->title }}</h2>
@@ -19,6 +20,7 @@
                     {{ $homeabout->long_description }}
                 </div>
             </div>
+            @endisset
 
         </div>
     </section><!-- End About Us Section -->
